@@ -11,6 +11,11 @@ do this, especially if the embedding is deeply nested or there are many fields.
 This library provides functions to check whether a struct type contains any fields that suppress promotion of
 a field of an embedded type.
 
+The idea is to put these checks in your unit tests for structs for which you want to enforce this constraint.
+The alternative is to create a linter, but it was thought that if you are designing a struct using this rule,
+then it is likely to be a bug if the rule is broken, so this check ought to operate at level of testing, rather
+than linting.
+
 See the unit tests for usage.
 
 
