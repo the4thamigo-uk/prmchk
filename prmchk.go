@@ -1,7 +1,6 @@
 package prmchk
 
 import (
-	"github.com/juliangruber/go-intersect"
 	"reflect"
 )
 
@@ -53,5 +52,16 @@ func fieldConflict(t1, t2 reflect.Type) bool {
 	}
 	fn1 := fieldNames(t1)
 	fn2 := fieldNames(t2)
-	return len(intersect.Simple(fn1, fn2)) > 0
+	return intersect(fn1, fn2)
+}
+
+func intersect(fn1, fn2 []string) bool {
+	for _, n1 := range fn1 {
+		for _, n2 := range fn2 {
+			if n1 == n2 {
+				return true
+			}
+		}
+	}
+	return false
 }
